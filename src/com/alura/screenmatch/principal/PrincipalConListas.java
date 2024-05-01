@@ -5,6 +5,9 @@ import com.alura.screenmatch.modelos.Serie;
 import com.alura.screenmatch.modelos.Titulo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class PrincipalConListas {
     public static void main(String[] args) {
@@ -17,7 +20,9 @@ public class PrincipalConListas {
         peliculaDeBruno.evalua(10);
         Serie lost = new Serie("Lost", 2000);
 
-        ArrayList<Titulo> lista = new ArrayList<>();
+        /* Al utiliza List para definir la lista nos permite trabajar de manera mas abstracta
+           y poder utilizar otras clases que implementen List*/
+        List<Titulo> lista = new ArrayList<>();
 
         lista.add(miPelicula);
         lista.add(otraPelicula);
@@ -31,8 +36,23 @@ public class PrincipalConListas {
             }
 
         }
-        //lista.forEach(item -> System.out.println(item));
+        ArrayList<String> listaDeActores = new ArrayList<>();
+        listaDeActores.add("Penelope Cruz");
+        listaDeActores.add("Antonio Banderas");
+        listaDeActores.add("Ricardo Darin");
 
+        System.out.println(listaDeActores);
+
+        Collections.sort(listaDeActores);
+        System.out.println("Lista de actores Ordenada " + listaDeActores);
+
+        Collections.sort(lista);
+        System.out.println(lista);
+
+        //funcion sort(Comparator) lambda
+        lista.sort(Comparator.comparing(Titulo::getFechaDeLanzamiento));
+        System.out.println("++++++++++");
+        System.out.println("Lista ordenada por fecha de lanzamiento: "+ lista);
 
 
     }
